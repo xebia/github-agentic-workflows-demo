@@ -120,10 +120,35 @@ behavior not currently promised by the product. Zero comments; issue open;
 no duplicate marking. Audit estimated approximately 128k total tokens
 including cache reads and 5.62 AI credits.
 
-## Repeat: in progress
+## Repeat: verified no extra noise
 
 Unchanged vague-issue run:
 https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42004179629
 
-Awaiting applied outputs and comment-count comparison before calling the
-repeat case verified.
+All jobs succeeded. Created at `2026-11-05T09:39:31Z`, completed at
+`2026-11-05T09:48:26Z`: **8 minutes 55 seconds from dispatch**, including
+approximately four minutes queued behind the related-feature run.
+
+The agent requested `noop`, not another label or comment. GitHub confirmed
+exactly the original comment ID `6654661985`; its created and updated timestamps
+both remain `2026-11-05T09:38:10Z`. No new comment and no rewrite occurred.
+The issue remains open with `demo-approved` and `needs-info`.
+Audit estimated approximately 129k total tokens including cache reads and
+5.79 AI credits. A no-change decision still consumes inference and runner
+resources: avoid redundant dispatches in normal operation.
+
+## Presenter-ready contract
+
+Use issue 2 and its verified comment as the main visible outcome, then contrast
+issue 1 (`bug`, zero comments) and issue 3 (`enhancement`, not duplicate).
+Show the source beside the compiled jobs, especially read-scoped `agent` and
+the separately permissioned `safe_outputs`. Show the repeat run as an example
+of useful abstention. Use the invalid-input run to demonstrate a deterministic
+gate before inference.
+
+The three first-pass positive runs took 5m14s to 5m18s. Prefer the verified
+earlier runs for the live presentation; a new manual dispatch is optional.
+This repository is ready for that bounded walkthrough, not unattended public
+triage or a promise of identical answers. Only synthetic public inputs were
+processed. No organization settings, persistent access, tokens, or billing
+configuration were changed. No PR was opened.
