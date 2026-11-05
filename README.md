@@ -10,6 +10,9 @@ allowed outputs. It never fixes code, closes/assigns issues, sweeps the backlog,
 or creates/merges PRs. The fictional Workshop Queue product supplies realistic
 issue context, not a claim of a deployed application.
 
+See [observed rehearsal evidence](docs/rehearsal.md) for actual readiness and
+run links. Never treat the evaluation rubric below as a recorded output.
+
 ## What to show
 
 1. Open a sample issue and explain what a maintainer needs to decide.
