@@ -1,5 +1,6 @@
 .tools/
 .runs/
+.github/aw/logs/
 node_modules/
 .env
 .env.*

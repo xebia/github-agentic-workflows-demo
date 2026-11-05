@@ -35,14 +35,95 @@ Agent, detection, safe outputs, and conclusion were skipped. No issue was
 created or modified. This establishes the invalid-input gate, not inference
 entitlement or successful triage.
 
-## Positive triage: not yet verified
+## Hosted deterministic tests: passed
 
-At this point the app's issue-creation tool reports that the project's linked
-GitHub account is unavailable. The GitHub MCP fallback opened an interactive
-issue form but did not create an issue. Read-only CLI inspection confirmed
-the repository had no issues.
+Run: https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42002475857
 
-CLI authentication and repository push work; these do not establish that
-Copilot inference is enabled for the organization. No credentials, permissions,
-billing, or paid settings were changed. Do not present the demo as stage-ready
-until a positive run produces and applies useful triage.
+Commit: `26a8f3933c5d9f1a669dd361cc12239d262605b2`.
+All seven contract tests passed on the GitHub-hosted runner with Node 24.
+Created `2026-11-05T09:27:05Z`, completed `2026-11-05T09:27:16Z`:
+11 seconds elapsed.
+
+## Synthetic issue inputs
+
+After explicit approval to use the authenticated GitHub CLI, exactly three
+synthetic issues were created. The pending MCP form was not submitted.
+
+- [Well-formed reported bug](https://github.com/xebia/github-agentic-workflows-demo/issues/1)
+- [Vague symptom](https://github.com/xebia/github-agentic-workflows-demo/issues/2)
+- [Related, not duplicate feature](https://github.com/xebia/github-agentic-workflows-demo/issues/3)
+
+## Well-formed report: verified successful output
+
+Run: https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42002533738
+
+Selected issue: 1. All seven jobs succeeded. Created at
+`2026-11-05T09:27:31Z`, completed at `2026-11-05T09:32:49Z`:
+**5 minutes 18 seconds** wall-clock latency.
+
+The requested and successfully applied output was one `bug` label, with
+HIGH confidence and this rationale:
+
+> Speaker name with comma is split into multiple CSV fields instead of
+> remaining a single escaped field, contradicting documented CSV export
+> behavior that requires proper escaping of commas within fields.
+
+GitHub inspection confirmed `bug` and `demo-approved`, zero comments, and
+the issue still open. A complete report did not need a clarification comment;
+zero comments is an allowed useful outcome.
+
+The pinned CLI's audit reported the resolved Copilot model
+`claude-haiku-4.5`, CLI `1.0.103`, approximately 128k total tokens including
+cache reads, and 5.80 estimated AI credits. Agent job: approximately 1.6
+minutes; detection: approximately 1.7 minutes. Audit heuristic graders also
+flagged resource-heavy execution and imperfect tool-success ratios. These
+are diagnostic estimates, not an invoice, vulnerability assessment, or a
+claim that the model's interpretation was independently reproduced.
+
+This successful run establishes that the existing organization-billed
+Copilot path worked at rehearsal time. No credentials, organization permissions,
+billing, or paid settings were changed.
+
+## Vague report: verified useful clarification
+
+Run: https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42003372208
+
+Selected issue: 2. All jobs succeeded. Created at `2026-11-05T09:33:38Z`,
+completed at `2026-11-05T09:38:52Z`: **5 minutes 14 seconds** elapsed.
+
+One HIGH-confidence `needs-info` label was applied; no speculative primary
+classification was added. Rationale: missing actual/expected behavior,
+reproduction steps, affected export behavior, and environment.
+
+Exactly [one comment](https://github.com/xebia/github-agentic-workflows-demo/issues/2#issuecomment-6654661985)
+asked about actual/expected CSV output, reproduction inputs, and environment.
+It referenced the existing comma-escaping report as a comparison and asked
+whether this was related or different, without asserting duplication.
+The agent-written body was under 180 words; the generated attribution/footer
+is additional framework content. The issue remains open.
+
+Audit estimated approximately 164k total tokens including cache reads and
+6.39 AI credits. These are estimates, not actual invoiced spend.
+
+## Related feature: verified distinct classification
+
+Run:
+https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42004042242
+
+Selected issue: 3. All jobs succeeded. Created at `2026-11-05T09:38:29Z`,
+completed at `2026-11-05T09:43:44Z`: **5 minutes 15 seconds** from dispatch,
+including its short concurrency wait.
+
+One HIGH-confidence `enhancement` label was applied. The structured rationale
+states that optional pending-session export with a status column is new
+behavior not currently promised by the product. Zero comments; issue open;
+no duplicate marking. Audit estimated approximately 128k total tokens
+including cache reads and 5.62 AI credits.
+
+## Repeat: in progress
+
+Unchanged vague-issue run:
+https://github.com/xebia/github-agentic-workflows-demo/actions/runs/42004179629
+
+Awaiting applied outputs and comment-count comparison before calling the
+repeat case verified.

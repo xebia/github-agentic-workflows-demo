@@ -115,6 +115,11 @@ sharing them; never publish raw credentials/logs wholesale.
 | Repeat unchanged issue | No extra comment; unchanged useful conclusions do not justify noise. |
 | Invalid number or unapproved issue | Fail the deterministic gate before inference, without issue writes. |
 
+The first rehearsals took about five minutes per complete run (including
+detection and output jobs). Open a verified earlier run for the main stage
+walkthrough; treat a fresh live dispatch as optional, not an instant response.
+See [the evidence](docs/rehearsal.md) for exact outcomes and timings.
+
 Do not repeatedly dispatch a failing engine. Keep a verified earlier run as
 the stage fallback; if no run succeeded, say explicitly that runtime readiness
 is blocked, rather than presenting a fabricated outcome.
